@@ -76,11 +76,11 @@ Lexicon::~Lexicon() {
 }
 
 /*
- * Swaps a 4-byte long from big to little endian byte order
+ * Swaps a 4-byte int from big to little endian byte order
  */
 
-static unsigned long my_ntohl(unsigned long arg) {
-   unsigned long result = ((arg & 0xff000000) >> 24) |
+static unsigned int my_ntohl(unsigned int arg) {
+   unsigned int result = ((arg & 0xff000000) >> 24) |
                           ((arg & 0x00ff0000) >> 8) |
                           ((arg & 0x0000ff00) << 8) |
                           ((arg & 0x000000ff) << 24);
@@ -95,10 +95,10 @@ static unsigned long my_ntohl(unsigned long arg) {
  */
 
 void Lexicon::readBinaryFile(string filename) {
-   long startIndex, numBytes;
+   int startIndex, numBytes;
    char firstFour[4], expected[] = "DAWG";
    ifstream istr(filename.c_str(), IOS_IN | IOS_BINARY);
-   if (false) my_ntohl(0);
+   //if (false) my_ntohl(0);
    if (istr.fail()) {
       error("Couldn't open lexicon file " + filename);
    }
@@ -121,7 +121,7 @@ void Lexicon::readBinaryFile(string filename) {
    }
 
 #if defined(BYTE_ORDER) && BYTE_ORDER == LITTLE_ENDIAN
-   unsigned long *cur = (unsigned long *) edges;
+   unsigned int *cur = (unsigned int *) edges;
    for (int i = 0; i < numEdges; i++, cur++) {
       *cur = my_ntohl(*cur);
    }

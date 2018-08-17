@@ -204,17 +204,17 @@ private:
 
    struct Edge {
 #if defined(BYTE_ORDER) && BYTE_ORDER == LITTLE_ENDIAN
-      unsigned long letter:5;
-      unsigned long lastEdge:1;
-      unsigned long accept:1;
-      unsigned long unused:1;
-      unsigned long children:24;
+      unsigned int letter:5;
+      unsigned int lastEdge:1;
+      unsigned int accept:1;
+      unsigned int unused:1;
+      unsigned int children:24;
 #else
-      unsigned long children:24;
-      unsigned long unused:1;
-      unsigned long accept:1;
-      unsigned long lastEdge:1;
-      unsigned long letter:5;
+      unsigned int children:24;
+      unsigned int unused:1;
+      unsigned int accept:1;
+      unsigned int lastEdge:1;
+      unsigned int letter:5;
 #endif
    };
 
