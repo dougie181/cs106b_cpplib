@@ -43,7 +43,7 @@ int getInteger(string prompt) {
    while (true) {
       cout << prompt;
       getline(cin, line);
-      istringstream stream(line);
+      istringstream stream(line + " ");
       stream >> value >> ws;
       if (!stream.fail() && stream.eof()) break;
       cout << "Illegal integer format. Try again." << endl;
@@ -58,7 +58,7 @@ double getReal(string prompt) {
    while (true) {
       cout << prompt;
       getline(cin, line);
-      istringstream stream(line);
+      istringstream stream(line + " ");
       stream >> value >> ws;
       if (!stream.fail() && stream.eof()) break;
       cout << "Illegal numeric format. Try again." << endl;
