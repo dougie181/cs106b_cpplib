@@ -46,7 +46,7 @@ const int HASH_MASK = unsigned(-1) >> 1;  /* All 1 bits except the sign     */
 
 int hashCode(const string & str) {
    unsigned hash = HASH_SEED;
-   int n = str.length();
+   int n = (int)str.length();
    for (int i = 0; i < n; i++) {
       hash = HASH_MULTIPLIER * hash + str[i];
    }

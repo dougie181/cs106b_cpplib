@@ -136,7 +136,7 @@ void readEntireFile(istream & is, vector<string> & lines) {
 
 string getRoot(string filename) {
    int dot = -1;
-   int len = filename.length();
+   int len = (int)filename.length();
    for (int i = 0; i < len; i++) {
       char ch = filename[i];
       if (ch == '.') dot = i;
@@ -151,7 +151,7 @@ string getRoot(string filename) {
 
 string getExtension(string filename) {
    int dot = -1;
-   int len = filename.length();
+   int len = (int)filename.length();
    for (int i = 0; i < len; i++) {
       char ch = filename[i];
       if (ch == '.') dot = i;
@@ -166,7 +166,7 @@ string getExtension(string filename) {
 
 string getHead(string filename) {
    int slash = -1;
-   int len = filename.length();
+   int len = (int)filename.length();
    for (int i = 0; i < len; i++) {
       char ch = filename[i];
       if (ch == '/' || ch == '\\') slash = i;
@@ -182,7 +182,7 @@ string getHead(string filename) {
 
 string getTail(string filename) {
    int slash = -1;
-   int len = filename.length();
+   int len = (int)filename.length();
    for (int i = 0; i < len; i++) {
       char ch = filename[i];
       if (ch == '/' || ch == '\\') slash = i;
@@ -198,7 +198,7 @@ string defaultExtension(string filename, string ext) {
    bool force = (ext[0] == '*');
    if (force) ext = ext.substr(1);
    int dot = -1;
-   int len = filename.length();
+   int len = (int)filename.length();
    for (int i = 0; i < len; i++) {
       char ch = filename[i];
       if (ch == '.') dot = i;
@@ -255,7 +255,7 @@ void renameFile(string oldname, string newname) {
 void createDirectoryPath(string path) {
    int cp = 1;
    if (path == "") return;
-   while ((cp = path.find('/', cp + 1)) != string::npos) {
+   while ((cp = (int)path.find('/', cp + 1)) != string::npos) {
       createDirectory(path.substr(0, cp - 1));
    }
    createDirectory(path);
@@ -325,7 +325,7 @@ static void splitPath(string path, Vector<string> list) {
    path += sep;
    int start = 0;
    while (true) {
-      int finish = path.find(sep, start);
+      int finish = (int)path.find(sep, start);
       if (finish == string::npos) break;
       if (finish > start + 1) {
          list.add(path.substr(start, finish - start - 1));
@@ -335,8 +335,8 @@ static void splitPath(string path, Vector<string> list) {
 }
 
 static bool recursiveMatch(string str, int sx, string pattern, int px) {
-   int slen = str.length();
-   int plen = pattern.length();
+   int slen = (int)str.length();
+   int plen = (int)pattern.length();
    if (px == plen) return (sx == slen);
    char pch = pattern[px];
    if (pch == '*') {

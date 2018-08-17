@@ -164,7 +164,7 @@ int TokenScanner::getPosition() const {
    if (savedTokens == NULL) {
       return int(isp->tellg());
    } else {
-      return int(isp->tellg()) - savedTokens->str.length();
+      return int(isp->tellg()) - (int)savedTokens->str.length();
    }
    return -1;
 }
@@ -195,7 +195,7 @@ TokenType TokenScanner::getTokenType(string token) const {
 string TokenScanner::getStringValue(string token) const {
    string str = "";
    int start = 0;
-   int finish = token.length();
+   int finish = (int)token.length();
    if (finish > 1 && (token[0] == '"' || token[0] == '\'')) {
       start = 1;
       finish--;

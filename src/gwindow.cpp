@@ -364,7 +364,7 @@ static void initColorTable() {
 
 static string canonicalColorName(string str) {
    string result = "";
-   int nChars = str.length();
+   int nChars = (int)str.length();
    for (int i = 0; i < nChars; i++) {
       char ch = str[i];
       if (!isspace(ch) && ch != '_') result += tolower(ch);

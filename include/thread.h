@@ -87,7 +87,7 @@ public:
 /* of the implementation and should not be of interest to clients.    */
 /**********************************************************************/
 
-   long id;   /* id linking this thread to the platform-specific data */
+   int id;   /* id linking this thread to the platform-specific data */
 
 };
 
@@ -205,7 +205,7 @@ public:
 
 private:
 
-   long id;     /* id linking this lock to the platform-specific data */
+   int id;     /* id linking this lock to the platform-specific data */
 
    friend class Lock_State;
 

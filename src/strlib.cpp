@@ -81,7 +81,7 @@ double stringToReal(string str) {
  */
 
 string toUpperCase(string str) {
-   int nChars = str.length();
+   int nChars = (int)str.length();
    for (int i = 0; i < nChars; i++) {
       str[i] = toupper(str[i]);
    }
@@ -89,7 +89,7 @@ string toUpperCase(string str) {
 }
 
 string toLowerCase(string str) {
-   int nChars = str.length();
+   int nChars = (int)str.length();
    for (int i = 0; i < nChars; i++) {
       str[i] = tolower(str[i]);
    }
@@ -106,7 +106,7 @@ string toLowerCase(string str) {
 
 bool equalsIgnoreCase(string s1, string s2) {
    if (s1.length() != s2.length()) return false;
-   int nChars = s1.length();
+   int nChars = (int)s1.length();
    for (int i = 0; i < nChars; i++) {
       if (tolower(s1[i]) != tolower(s2[i])) return false;
    }
@@ -122,7 +122,7 @@ bool equalsIgnoreCase(string s1, string s2) {
 
 bool startsWith(string str, string prefix) {
    if (str.length() < prefix.length()) return false;
-   int nChars = prefix.length();
+   int nChars = (int)prefix.length();
    for (int i = 0; i < nChars; i++) {
       if (str[i] != prefix[i]) return false;
    }
@@ -134,8 +134,8 @@ bool startsWith(string str, char prefix) {
 }
 
 bool endsWith(string str, string suffix) {
-   int nChars = suffix.length();
-   int start = str.length() - nChars;
+   int nChars = (int)suffix.length();
+   int start = (int)str.length() - nChars;
    if (start < 0) return false;
    for (int i = 0; i < nChars; i++) {
       if (str[start + i] != suffix[i]) return false;
@@ -148,7 +148,7 @@ bool endsWith(string str, char suffix) {
 }
 
 string trim(string str) {
-   int finish = str.length() - 1;
+   int finish = (int)str.length() - 1;
    while (finish >= 0 && isspace(str[finish])) {
       finish--;
    }
@@ -168,7 +168,7 @@ string trim(string str) {
 static const string STRING_DELIMITERS = ",:)}]\n";
 
 bool stringNeedsQuoting(const string & str) {
-   int n = str.length();
+   int n = (int)str.length();
    for (int i = 0; i < n; i++) {
       char ch = str[i];
       if (isspace(ch)) return false;
@@ -234,7 +234,7 @@ void readQuotedString(istream & is, string & str) {
       int endTrim = 0;
       while (is.get(ch) && STRING_DELIMITERS.find(ch) == string::npos) {
          str += ch;
-         if (!isspace(ch)) endTrim = str.length();
+         if (!isspace(ch)) endTrim = (int)str.length();
       }
       if (is) is.unget();
       str = str.substr(0, endTrim);
@@ -244,7 +244,7 @@ void readQuotedString(istream & is, string & str) {
 void writeQuotedString(ostream & os, const string & str, bool forceQuotes) {
    if (!forceQuotes && stringNeedsQuoting(str)) forceQuotes = true;
    if (forceQuotes) os << '"';
-   int len = str.length();
+   int len = (int)str.length();
    for (int i = 0; i < len; i++) {
       char ch = str.at(i);
       switch (ch) {

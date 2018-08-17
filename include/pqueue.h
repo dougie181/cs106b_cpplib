@@ -178,13 +178,13 @@ private:
    struct HeapEntry {
       ValueType value;
       double priority;
-      long sequence;
+      int sequence;
    };
 
 /* Instance variables */
 
    Vector<HeapEntry> heap;
-   long enqueueCount;
+   int enqueueCount;
    int backIndex;
    int count;
    int capacity;

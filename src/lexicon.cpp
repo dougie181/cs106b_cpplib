@@ -326,7 +326,7 @@ void Lexicon::iterator::advanceToNextEdge() {
 };
 
 static void toLowerCaseInPlace(string & str) {
-   int nChars = str.length();
+   int nChars = (int)str.length();
    for (int i = 0; i < nChars; i++) {
       str[i] = tolower(str[i]);
    }

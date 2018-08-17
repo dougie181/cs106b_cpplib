@@ -102,7 +102,7 @@ public:
    virtual int underflow() {
       // Allow long strings at some point
       string line = getLineConsole();
-      int n = line.length();
+      int n = (int)line.length();
       if (n + 1 >= BUFFER_SIZE) error("String too long");
       for (int i = 0; i < n; i++) {
          inBuffer[i] = line[i];
@@ -253,7 +253,7 @@ string Platform::getSearchPathSeparator() {
 
 string Platform::expandPathname(string filename) {
    if (filename == "") return "";
-   int len = filename.length();
+   int len = (int)filename.length();
    if (filename[0] == '~') {
       int spos = 1;
       while (spos < len && filename[spos] != '\\' && filename[spos] != '/') {
@@ -269,7 +269,7 @@ string Platform::expandPathname(string filename) {
          homedir = pw->pw_dir;
       }
       filename = string(homedir) + filename.substr(spos);
-      len = filename.length();
+      len = (int)filename.length();
    }
    for (int i = 0; i < len; i++) {
       if (filename[i] == '\\') filename[i] = '/';
@@ -1061,7 +1061,7 @@ static void scanOptions() {
       if (!infile.fail()) {
          string line;
          while (getline(infile, line)) {
-            int equals = line.find('=');
+            int equals = (int)line.find('=');
             if (equals != string::npos) {
                string key = line.substr(0, equals);
                string value = line.substr(equals + 1);
