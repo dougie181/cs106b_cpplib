@@ -1,6 +1,12 @@
 README for StanfordCPPLib
+Last modified on Fri Aug 17 13:01:03 2018 by dougie181
 Last modified on Sat Aug 16 17:49:04 2014 by eroberts
 -----------------------------------------------------
+This is a copy of the Stanford Portable C++ library that was 
+obtain from https://cs.stanford.edu/people/eroberts/StanfordCPPLib/
+and modified to work on XCode 9.4.1.
+-----------------------------------------------------
+
 This package contains the code for the Stanford Portable C++ library, as
 described in the paper by Eric Roberts and Keith Schwarz included in the
 doc directory.
