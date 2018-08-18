@@ -39,7 +39,10 @@ static void testGetTail(void);
 static void testDefaultExtension(void);
 static void testFileExists(void);
 static void testIsFile(void);
+static void testOpenFile(void);
 static void testIsDirectory(void);
+static void testGetCurrentDirectory(void);
+static void testSetCurrentDirectory(void);
 static void testExpandPathname(void);
 static void testMatchFilenamePattern(void);
 
@@ -51,7 +54,10 @@ void testFilelibLibrary() {
    testDefaultExtension();
    testFileExists();
    testIsFile();
+   testOpenFile();
    testIsDirectory();
+   testGetCurrentDirectory();
+   testSetCurrentDirectory();
    testExpandPathname();
    testMatchFilenamePattern();
    reportResult("filelib.h library");
@@ -107,10 +113,33 @@ static void testIsFile() {
    test(isFile("xyzzy.cpp"), false);
 }
 
+static void testOpenFile() {
+   ifstream stream;
+
+   test(openFile(stream, "testfile"),true);
+   if (stream != NULL) stream.close();
+   
+   test(openFile(stream, "incorrecttestfile"),false);
+   if (stream != NULL) stream.close();
+}
+
 static void testIsDirectory() {
    test(isDirectory("TestFilelibLibrary.cpp"), false);
    test(isDirectory("."), true);
    test(isDirectory("xyzzy.cpp"), false);
+}
+ 
+static void testGetCurrentDirectory() {
+   // no unit test here
+   // if error, the low level getcwd() function error
+   string curDirectory = getCurrentDirectory();
+}
+
+static void testSetCurrentDirectory() {
+   // no unit test here
+   // if error, the low level chdir() function error
+   string newDirectory = getCurrentDirectory();
+   setCurrentDirectory(newDirectory);
 }
 
 static void testExpandPathname() {
