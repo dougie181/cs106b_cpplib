@@ -212,7 +212,7 @@ bool Platform::isDirectory(string filename) {
 }
 
 void Platform::setCurrentDirectory(string path) {
-   if (chdir(path.c_str()) == 0) {
+   if (chdir(path.c_str()) == -1) {
       string msg = "setCurrentDirectory: ";
       string err = string(strerror(errno));
       error(msg + err);
